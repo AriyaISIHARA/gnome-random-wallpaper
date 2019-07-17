@@ -3,7 +3,8 @@ random wallpaper switcher for gnome-driven OS, such as Ubuntu18.04LTS
 
 *gnome-random-wallpaper is an absolutely free script and comes with* **absolutely no warranty**.
 
-# Tested, Developed, and Hopefully works at least in
+# Environment
+This script is developed, tested, being used, and hopefully works at least in:
 - OS: Ubuntu 18.04.2 LTS
 - bash: 4.4.19(1)-release (x86_64-pc-linux-gnu)
 
