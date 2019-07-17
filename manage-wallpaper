@@ -1,0 +1,8 @@
+#!/bin/bash
+INTERVAL=180
+while true;
+do
+	./change-wallpaper
+	sleep $INTERVAL
+done
+

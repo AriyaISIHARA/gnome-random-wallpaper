@@ -1,0 +1,31 @@
+#!/bin/bash
+usage_exit() {
+	echo "Usage: $0 [-v]" 1>&2
+	exit 1
+}
+while getopts v OPT
+do
+	case $OPT in
+		v)	VERBOSE=1
+			;;
+		\?) 	usage_exit
+			;;
+	esac
+done
+
+WALLPAPERDIR="$HOME/Pictures/wallpapers"
+NUM_CANDIDATES=`ls -l $WALLPAPERDIR | awk '{print $9}' | grep '\.jpe\?g' | wc -l`
+
+if (($VERBOSE)); then
+	echo "$NUM_CANDIDATES candidates of wallpaper image files."
+fi
+
+WALLPAPERIDX=$(($RANDOM % NUM_CANDIDATES + 1))
+WALLPAPER=`ls $WALLPAPERDIR | grep -n '.\+' | grep ^$WALLPAPERIDX: | sed s/$WALLPAPERIDX://`
+URI=file://$WALLPAPERDIR/$WALLPAPER
+if (($VERBOSE)); then
+	echo "wallpaper file: $URI"
+fi
+gsettings set org.gnome.desktop.background picture-uri $URI
+gsettings set org.gnome.desktop.screensaver picture-uri $URI
+
